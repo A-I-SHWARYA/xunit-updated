@@ -18,6 +18,8 @@ namespace XunitAssessment.Controllers
             this.aocolumninterface = aocolumninterface;
         }
 
+
+        //Add a column for the AOTable record created in the above  API
         [HttpPost]
         public async Task<IActionResult> AddColumn([FromBody] Aocolumn column)
         {
@@ -51,6 +53,7 @@ namespace XunitAssessment.Controllers
 
 
 
+        // //Delete a record
         [HttpDelete("{Id}")]
         public async Task<IActionResult> DeleteColumn(Guid Id)
         {
@@ -74,6 +77,8 @@ namespace XunitAssessment.Controllers
             }
         }
 
+
+        //Get all records with DataType "int" and "uniqueidentifier" for a particular Table by passing TableName(AOTable) as parameter
         [HttpGet("{Name}")]
         public async Task<IActionResult> GetColumnsByType([FromRoute]string Name)
         {

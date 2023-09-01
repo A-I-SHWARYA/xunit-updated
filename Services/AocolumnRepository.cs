@@ -25,6 +25,9 @@ namespace XunitAssessment.Services
             
 
         }
+
+
+        //Delete a record
         public async Task<Aocolumn> DeleteColumn(Guid Id)
         {
             var deletecolumn = await demoContext.Aocolumns.FindAsync(Id);
