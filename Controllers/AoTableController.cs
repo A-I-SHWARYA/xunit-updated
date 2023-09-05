@@ -84,6 +84,33 @@ namespace XunitAssessment.Controllers
             }
         }
 
+
+
+
+        //Get all records of Type "coverage" and "form". This Type needs to be a parameter.
+
+        [HttpGet("{Type}")]
+        public async Task<IActionResult> GetByType(string Type)
+        {
+            try
+            {
+                var formorcoverage = await aotableInterface.GetByType(Type);
+                if (formorcoverage != null)
+                {
+                    return Ok(formorcoverage);
+                }
+                else
+                {
+                    return NotFound("Tables not found");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         //Get all records which has a particular word in the Name. The word needs to be a parameter.
 
         [HttpGet("{Name}/gettabledata")]
@@ -110,29 +137,7 @@ namespace XunitAssessment.Controllers
         }
 
 
-        //Get all records of Type "coverage" and "form". This Type needs to be a parameter.
-
-        [HttpGet("{Type}")]
-        public async Task<IActionResult> GetByType(string Type)
-        {
-            try
-            {
-                var formorcoverage = await aotableInterface.GetByType(Type);
-                if (formorcoverage != null)
-                {
-                    return Ok(formorcoverage);
-                }
-                else
-                {
-                    return NotFound("Tables not found");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
+        
 
 
 
